@@ -95,3 +95,12 @@ body {
   z-index: 1;
 }
 
+
+.counter {
+
+    margin-left: 250px;
+    padding-left: 50px;
+
+    padding-right: 50px;
+    padding-bottom: 0px;
+}
