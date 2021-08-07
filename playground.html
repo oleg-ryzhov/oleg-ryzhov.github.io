@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+
+
+
+<h1 onmouseover="style.color='red'" onmouseout="style.color='black'" onclick="style.color='blue'">
+bee
+</h1>
+
+
+<h2>Converter</h2>
+<label>Celsius:</label>
+<input id="mph" oninput="speedConverter(this.value)">
+
+<p>Fahrenheit: <span id="kph"></span></p>
+
+ 
+<script>
+
+var c;
+
+function speedConverter(c) 
+
+{
+  var f = c * 1.8 + 32;
+  document.getElementById("kph").innerHTML = f;
+}
+</script>
+
+
+
+<h2>Changing text</h2>
+
+<h2> <span onmouseover="textConverterOver(this)" onmouseout="textConverterOut(this)" onclick="textConverterClick(this)">Hello!</span></h2>
+
+ 
+<script>
+
+
+
+function textConverterOver(c) 
+
+{
+	 y = "Hello"
+  c.innerHTML = "bee!";
+}
+
+
+function textConverterOut(x) 
+
+{
+  x.innerHTML = y;
+}
+
+
+function textConverterClick(z) 
+
+{
+ y = "fish";
+  z.innerHTML = "fish";
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
