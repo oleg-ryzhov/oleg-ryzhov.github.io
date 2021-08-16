@@ -7,8 +7,8 @@
 
 
 
-<h1 onmouseover="style.color='red'" onmouseout="style.color='black'" onclick="style.color='blue'">
-bee
+<h1 onmouseover="style.color='blue'" onmouseout="style.color='white'" onclick="style.color='white'">
+Hi!
 </h1>
 
 
@@ -35,7 +35,7 @@ function speedConverter(c)
 
 <h2>Changing text</h2>
 
-<h2> <span onmouseover="textConverterOver(this)" onmouseout="textConverterOut(this)" onclick="textConverterClick(this)">Hello!</span></h2>
+<h2> <span onmouseover="textConverterOver(this)" onmouseout="textConverterOut(this)" onclick="textConverterClick(this)">Do you want a fish?</span></h2>
 
  
 <script>
@@ -45,8 +45,8 @@ function speedConverter(c)
 function textConverterOver(c) 
 
 {
-	 y = "Hello"
-  c.innerHTML = "bee!";
+	 y = "Here's your fish?"
+  c.innerHTML = "Click me please";
 }
 
 
@@ -60,11 +60,49 @@ function textConverterOut(x)
 function textConverterClick(z) 
 
 {
- y = "fish";
-  z.innerHTML = "fish";
+ y = "Okey. Here's your fish.";
+  z.innerHTML = "Okey. Here's your fish.";
 }
 
 </script>
+
+
+
+
+<h2>Show picture when a button is clicked</h2>
+
+<p>Do you want a cow?</p>
+
+
+<button onclick="showCow()">Yes</button>
+<button onclick="showText()">No</button>
+<p id="noText"></p>
+
+<script>
+
+	function showCow() 
+
+{
+  document.getElementById("cow").style.visibility="visible";
+  document.getElementById("noText").innerHTML = "";
+}
+
+	function showText() 
+
+{
+  document.getElementById("noText").innerHTML = "Okay. No cow for you.";
+  document.getElementById("cow").style.visibility="hidden";
+}
+
+
+</script>
+
+<p>
+	<img id="cow" src="playground/cow.jpg" width="400" style="visibility:hidden"/>
+</p>
+
+
+	
 
 
 
