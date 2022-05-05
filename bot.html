@@ -1,0 +1,93 @@
+
+
+
+
+<h2 id="botwords"> Hello! I'm Robby Bot. What's your name?
+</h2>
+
+<p>
+<img id="bot-image" src="bot-0.png"/>
+
+</p>
+
+<label>Type your answer here:</label>
+
+<input id="visitor">
+
+<button id="sendButton" onclick="botAnswer()">Send</button>
+
+
+<script>
+
+
+// Send on Enter
+var input = document.getElementById("visitor");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("sendButton").click();
+  }
+});
+
+
+// Check input
+function botAnswer()  {
+             var visitorName = document.getElementById("visitor").value;
+         
+
+             if(visitorName== "") {
+                 document.getElementById("botwords").innerHTML = "I didn't get your name. Say it again please!";
+				 document.getElementById("bot-image").src="bot-1.png";
+                 return false;
+             } 
+
+			 
+			 var letters = /^[A-Za-z]+$/;
+			 
+             if(!visitorName.match(letters)) {
+               document.getElementById("botwords").innerHTML = "Hmm... That's a weird name.";
+			   document.getElementById("bot-image").src="bot-3.png";
+                 return false;
+             } else
+			 {
+			 
+             document.getElementById("botwords").innerHTML = "Greate to meet you," + " " + visitorName + "!";
+			 document.getElementById("bot-image").src="bot-2.png";
+			 wantQuiz();
+             return true;
+			 }
+         }
+		 
+		 
+//Take quiz, yes or no. Не работает!!! 
+
+function wantQuiz()  {
+             var visitorAnswer = document.getElementById("visitor").value;
+         
+
+             if(visitorAnswer== "no") {
+                 document.getElementById("botwords").innerHTML = "Okay, maybe next time!";
+				 document.getElementById("bot-image").src="bot-1.png";
+                 return false;
+             }
+
+			 if(visitorAnswer== "yes") {
+                 document.getElementById("botwords").innerHTML = "Greate!";
+				 document.getElementById("bot-image").src="bot-1.png";
+                 return false;
+             } else
+
+
+			 {
+			 
+             document.getElementById("botwords").innerHTML = "Sorry, I don't understand! Say yes or no.";
+			 document.getElementById("bot-image").src="bot-1.png";
+             return true;
+			 }
+         }		 
+		 
+		 
+		 
+		 
+		 
+</script> 
