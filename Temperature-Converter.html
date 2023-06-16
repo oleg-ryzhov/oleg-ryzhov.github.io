@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Temperature Converter</h2>
+
+<p>
+	<form>
+		<input type="radio" id="Cel-radio" name="Switch" checked="checked">
+		<label for="Cel-radio">Celsius to Fahrenheit</label><br>
+		<input type="radio" id="Far-radio" name="Switch">
+		<label for="Far-radio">Fahrenheit to Celsius</label><br>
+	</form>
+</p>
+
+<p>
+	<form>
+		<input type="number" id="Input" oninput="tempConverter(this.value)">
+	</form>
+</p>
+
+
+
+
+
+
+<p><span id="Unit"></span><span id="Result"></span></p>
+
+ 
+<script>
+
+
+var myInput;
+var myResult;
+
+
+
+
+function tempConverter(myInput) 
+
+{
+
+
+  if (document.getElementById("Cel-radio").checked) 
+
+	{
+	  var myResult = myInput * 1.8 + 32;
+	  document.getElementById("Result").innerHTML = myResult;
+	  document.getElementById("Unit").innerHTML = "Fahrenheit: ";
+	}
+	
+	
+  else 
+	{
+	  var myResult = (myInput - 32) / 1.8;
+	  document.getElementById("Result").innerHTML = myResult;
+	  document.getElementById("Unit").innerHTML = "Celsius: ";
+	}
+ 
+}
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+
+ <h3>What is 6*7?</h3>
+
+<form>
+		<input type="radio" id="54#1" name="Switch">
+		<label for="54#1">54</label><br>
+		
+		<input type="radio" id="47#1" name="Switch">
+		<label for="47#1">47</label><br>
+		
+		<input type="radio" id="42#1" name="Switch">
+		<label for="42#1">42</label><br>
+		
+		<input type="radio" id="13#1" name="Switch">
+		<label for="13#1">13</label><br>
+ </form>
+
+
+
+<p id="Text1"></p>
+
+ 
+<p><button onclick="Check1()">Submit</button></p>
+
+
+
+<div id="Link1-2"></div>
+ 
+<script>
+
+
+
+function Check1()
+
+{
+
+
+  if (document.getElementById("42#1").checked)
+
+	{
+      document.getElementById("Text1").innerHTML = "Correct";
+	
+//	  document.getElementById("Link1-2").innerHTML = "<a href=\Question-222.html>Next</a>";
+
+	  document.getElementById("Link1-2").innerHTML = "<form action='\Question-2.html'><button type='submit'>Next</button></form>";
+
+	}
+	
+	
+  else  
+	{
+	  document.getElementById("Text1").innerHTML = "Try again";
+	  
+	}
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

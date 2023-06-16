@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+ 
+
+
+ 
+ <h3>#1 What is the lightest solid atom is?</h3> 
+
+ <form>
+		<input type="radio" id="Hydrogen1" name="Switch">
+		<label for="Hydrogen1">Hydrogen</label><br>
+		
+		<input type="radio" id="Byrillium1" name="Switch">
+		<label for="Byrillium1">Byrillium</label><br>
+		
+		<input type="radio" id="Lithium1" name="Switch">
+		<label for="Lithium1">Lithium</label><br>
+		
+		<input type="radio" id="Magnesium1" name="Switch">
+		<label for="Magnesium1">Magnesium</label><br>
+ </form>
+ 
+ <p id="Text1"></p>
+ 
+ 
+ <h3>#2 Why helium is lighter than oxygen?</h3>
+ 
+ <form>
+		<input type="radio" id="Protons2" name="Switch2">
+		<label for="Protons2">Oxygen atom has more protons than helium atom</label><br>
+		
+		<input type="radio" id="Electrons2" name="Switch2">
+		<label for="Electrons2">Oxygen atom has more electrons than helium atom</label><br>
+		
+		<input type="radio" id="Periods2" name="Switch2">
+		<label for="Periods2">Oxygen atom has more periods than helium atom</label><br>
+		
+		<input type="radio" id="Families2" name="Switch2">
+		<label for="Families2">Oxygen and helium atoms are in the different families</label><br>		
+ 
+ 
+ 
+ 
+ </form>
+
+<p id="Text2"></p>
+ 
+ 
+<p><button onclick="check()">Submit</button></p>
+<p id="Text"></p>
+
+
+ 
+<script>
+
+
+
+
+
+function check()
+
+{
+
+
+  if (document.getElementById("Lithium1").checked)
+
+	{
+      document.getElementById("Text1").innerHTML = "Correct";
+	}
+	
+	
+  else  
+	{
+	  document.getElementById("Text1").innerHTML = "Incorrect";
+	}
+ 
+ 
+ if (document.getElementById("Protons2").checked)
+
+	{
+      document.getElementById("Text2").innerHTML = "Correct";
+	}
+	
+	
+  else  
+	{
+	  document.getElementById("Text2").innerHTML = "Incorrect";
+	}
+
+//Below we check all answers
+
+
+if (document.getElementById("Lithium1").checked && document.getElementById("Protons2").checked)
+   
+   
+	{
+      document.getElementById("Text").innerHTML = "Congratulations! You passed the test!";
+	}
+	
+	
+  else  
+	{
+	  document.getElementById("Text").innerHTML = "Try again";
+	}
+
+  
+ }
+
+</script>
+</body>
+</html>

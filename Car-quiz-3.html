@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<body onload="nextSet()">
+
+
+<div id="allPage">
+
+ <h3 id="q"></h3> 
+
+ <form>
+    <input type="radio" id="a1" name="Switch">
+    <label for="a1" id=la1></label><br>
+    
+    <input type="radio" id="a2" name="Switch">
+    <label for="a2" id=la2></label><br>
+
+    <input type="radio" id="a3" name="Switch">
+    <label for="a3" id=la3></label><br>
+	
+	<input type="radio" id="a4" name="Switch">
+    <label for="a4" id=la4></label><br>
+    
+    
+ </form>
+
+
+<p id="Text"></p> 
+<p><button onclick="Check()" id="SubmitButton">Submit</button></p>
+<p><button onclick="nextSet()" id="NextButton" hidden>Next</button></p>
+<p><button onclick="seeResults()" id="ResultButton" hidden>See results</button></p>
+
+</div>
+
+
+<script>
+// Create arrays for every Q and As set with values 
+
+const qSet1 = [
+  "Which car is German?",
+  "Saab",
+  "Fiat",
+  "BMW",
+  "Skoda",
+  "a3"
+]; 
+
+const qSet2 = [
+  "Which car is Japanese?",
+  "Saab",
+  "Volvo",
+  "Opel",
+  "Honda",
+  "a4"
+]; 
+
+const qSet3 = [
+  "Which car is Swedish?",
+  "Kia",
+  "Volvo",
+  "BMW",
+  "Renault",
+  "a2"
+]; 
+
+//Create array of qSet arrays
+//const allQSets = [qSet1, qSet2, qSet3]
+
+
+var allQSets = [qSet1, qSet2, qSet3];
+ 
+let currentQSet;
+
+let setsIndex = 0;
+
+let cAns;
+
+
+
+//Go to the next question
+
+function nextSet() 
+
+  
+  {
+     currentQSet = allQSets[setsIndex];
+     setsIndex++;
+	 
+	 fillForm();
+  }
+  
+//Below we fill in Q and As sets
+
+function fillForm()
+
+{
+
+ document.getElementById("q").innerHTML = currentQSet[0];
+ document.getElementById("la1").innerHTML = currentQSet[1];
+ document.getElementById("la2").innerHTML = currentQSet[2];
+ document.getElementById("la3").innerHTML = currentQSet[3];
+ document.getElementById("la4").innerHTML = currentQSet[4];
+ cAns = currentQSet[5];
+ clearRadioButtons()
+ document.getElementById("NextButton").hidden = true;
+ document.getElementById("SubmitButton").hidden = false;
+ document.getElementById("Text").innerHTML = " ";
+
+}
+
+//Clear filled in radio button
+
+function clearRadioButtons()
+
+{
+  var ele = document.querySelectorAll("input[type=radio]");
+   for(var i=0;i<ele.length;i++)
+   {
+      ele[i].checked = false;
+   }
+}
+
+//Below we check the answers and whether it the last Q
+
+function Check()
+
+{
+
+// The answer is correct and it's the last question
+  if (document.getElementById(cAns).checked && currentQSet == allQSets[allQSets.length-1])
+  
+	{
+	  document.getElementById("Text").innerHTML="Congratulations! You passed the quiz!";
+      document.getElementById("SubmitButton").hidden = true;
+	  
+// Show Result button
+	  document.getElementById("ResultButton").hidden = false;
+	}
+
+// The answer is correct and it's not the last question	
+  else if (document.getElementById(cAns).checked)
+  
+	{
+	  document.getElementById("Text").innerHTML="Correct!";
+	  document.getElementById("SubmitButton").hidden = true;
+	  document.getElementById("NextButton").hidden = false;
+	}
+	
+// The answer is incorrect
+  else
+  
+	{
+	  document.getElementById("Text").innerHTML = "Try again!";
+	}
+
+}
+
+// Go to the results page
+
+function seeResults()
+
+	{
+	  document.getElementById("allPage").innerHTML = "Your results are here";
+	}
+
+
+
+
+
+
+
+
+//First function loops through allQSets and takes next qSet, calls second function
+
+//Second function picks qSet values and inserts them into the form (question and answers). 
+//Passes last value (index number of correct answer) to var  (Zero state - func called on page load)
+
+</script>
+</body>
+</html>

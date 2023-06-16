@@ -1,0 +1,9 @@
+To send your changes to GitHub:
+
+1. Open Git Bash
+2. Type these commands:
+
+git pull
+git add --all
+git commit -am "your message"
+git push 
