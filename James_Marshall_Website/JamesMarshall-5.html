@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="jamesMarshallStyles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+  <body>
+  
+    <div class="content"> <p>James found specks of gold flowing through the mill's tailrace.
+	 At first he didn't believe his eyes, but the analysis had shown it was gold.</p>
+	</div>
+	<div class="imgbox"><img src="JamesMarshallPictures/HowJamesMarshallFoundGold.jpg"></div>
+  
+  
+	<script>
+
+function goBack() {
+	window.location.href = 'JamesMarshall-4.html';
+}
+
+function goForward() {
+	window.location.href = 'JamesMarshall-6.html';
+}
+
+document.addEventListener('keydown', function(event) {
+      // Check if the pressed key is the ArrowLeft key
+      if (event.key === 'ArrowLeft') {
+        // Call function goBack()
+        goBack();
+      }
+	  // Check if the pressed key is the ArrowRight key
+	  if (event.key === 'ArrowRight') {
+	    // Call function goForward()
+		goForward();
+		}
+    });
+	</script>
+  </body>
+</html>

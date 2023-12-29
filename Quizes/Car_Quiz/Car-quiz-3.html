@@ -2,34 +2,38 @@
 <html>
 <body onload="nextSet()">
 
+<div id="Header"></div>
 
 <div id="allPage">
+
 
  <h3 id="q"></h3> 
 
  <form>
-    <input type="radio" id="a1" name="Switch">
+    <input type="radio" id="1" name="Switch">
     <label for="a1" id=la1></label><br>
     
-    <input type="radio" id="a2" name="Switch">
+    <input type="radio" id="2" name="Switch">
     <label for="a2" id=la2></label><br>
 
-    <input type="radio" id="a3" name="Switch">
+    <input type="radio" id="3" name="Switch">
     <label for="a3" id=la3></label><br>
 	
-	<input type="radio" id="a4" name="Switch">
+	<input type="radio" id="4" name="Switch">
     <label for="a4" id=la4></label><br>
     
     
  </form>
 
 
-<p id="Text"></p> 
 <p><button onclick="Check()" id="SubmitButton">Submit</button></p>
 <p><button onclick="nextSet()" id="NextButton" hidden>Next</button></p>
 <p><button onclick="seeResults()" id="ResultButton" hidden>See results</button></p>
 
+<p id="Text"></p> 
+
 </div>
+
 
 
 <script>
@@ -41,7 +45,7 @@ const qSet1 = [
   "Fiat",
   "BMW",
   "Skoda",
-  "a3"
+  "3"
 ]; 
 
 const qSet2 = [
@@ -50,7 +54,7 @@ const qSet2 = [
   "Volvo",
   "Opel",
   "Honda",
-  "a4"
+  "4"
 ]; 
 
 const qSet3 = [
@@ -59,28 +63,32 @@ const qSet3 = [
   "Volvo",
   "BMW",
   "Renault",
-  "a2"
-]; 
+  "2"
+];
+
+
 
 //Create array of qSet arrays
-//const allQSets = [qSet1, qSet2, qSet3]
+//const allQSets = [qSet1, qSet2, qSet3, qSet4]
 
 
-var allQSets = [qSet1, qSet2, qSet3];
+const allQSets = [qSet1, qSet2, qSet3];
  
 let currentQSet;
 
 let setsIndex = 0;
 
-let cAns;
+// correctAnswerID takes last element from currentQSet 
+//which is the same as ID of a radio button and the same as element index in array. 
+let correctAnswerID;
 
 
 
 //Go to the next question
 
-function nextSet() 
+function nextSet()
 
-  
+
   {
      currentQSet = allQSets[setsIndex];
      setsIndex++;
@@ -88,7 +96,14 @@ function nextSet()
 	 fillForm();
   }
   
-//Below we fill in Q and As sets
+  
+// These variables are used to collect questions and answers
+let correctAnswer;
+const correctAnswersArray = [];
+const questionsArray = [];
+
+
+//Below we fill in Q and As sets and collect correct answers
 
 function fillForm()
 
@@ -99,7 +114,21 @@ function fillForm()
  document.getElementById("la2").innerHTML = currentQSet[2];
  document.getElementById("la3").innerHTML = currentQSet[3];
  document.getElementById("la4").innerHTML = currentQSet[4];
- cAns = currentQSet[5];
+ 
+ //Assign current ID for function check()
+ correctAnswerID = currentQSet[5];
+ 
+ // Collect questions to display by function seeResults()
+  questionsArray.push(currentQSet[0]);
+
+ // Collect correct answers to display by the same function
+ correctAnswer = currentQSet[correctAnswerID];
+ correctAnswersArray.push(correctAnswer);
+ 
+
+ 
+ 
+ //Call function clearRadioButtons()
  clearRadioButtons()
  document.getElementById("NextButton").hidden = true;
  document.getElementById("SubmitButton").hidden = false;
@@ -119,25 +148,25 @@ function clearRadioButtons()
    }
 }
 
-//Below we check the answers and whether it the last Q
+//Below we check the answers and whether it is the last Q
 
 function Check()
 
 {
 
 // The answer is correct and it's the last question
-  if (document.getElementById(cAns).checked && currentQSet == allQSets[allQSets.length-1])
+  if (document.getElementById(correctAnswerID).checked && currentQSet == allQSets[allQSets.length-1])
   
 	{
 	  document.getElementById("Text").innerHTML="Congratulations! You passed the quiz!";
       document.getElementById("SubmitButton").hidden = true;
-	  
+	
 // Show Result button
 	  document.getElementById("ResultButton").hidden = false;
 	}
 
 // The answer is correct and it's not the last question	
-  else if (document.getElementById(cAns).checked)
+  else if (document.getElementById(correctAnswerID).checked)
   
 	{
 	  document.getElementById("Text").innerHTML="Correct!";
@@ -154,14 +183,30 @@ function Check()
 
 }
 
-// Go to the results page
+// Clear page. Show results.
+
+// var allQustions = [qSet1[0], qSet2[0], qSet3[0]]; //Needs to be changed.
+
+
+
+
+
 
 function seeResults()
 
-	{
-	  document.getElementById("allPage").innerHTML = "Your results are here";
-	}
+{
 
+let buildRows = "<table border='1';>";
+
+for (let i = 0; i < questionsArray.length; i++)
+  {
+   buildRows += "<tr> <td>" + questionsArray[i] + "</td> <td>" + correctAnswersArray[i] + "</td> </tr>";
+ 
+  }
+   document.getElementById("allPage").innerHTML = buildRows + "</table>";
+   document.getElementById("Header").innerHTML = "<h4>"+"Here are your results"+"</h4>";
+   
+}
 
 
 

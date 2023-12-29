@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  
+    #controlledElement {
+      width: 70px;
+      height: 70px;
+      background-color: red;
+      position: absolute;
+	}
+  </style>
+</head>
+<body>
+
+<div id="controlledElement">
+
+<script>
+
+// Get the controlled element
+const controlledElement = document.getElementById('controlledElement');
+
+// Initial positions
+let positionX = 0;
+let positionY = 0;
+
+// Movement speed
+const speed = 5; // Adjust the value to control the movement speed
+
+// Function to update the element's position
+function updatePosition() {
+  controlledElement.style.left = positionX + 'px';
+  controlledElement.style.top = positionY + 'px';
+}
+
+// Store pressed keys
+const pressedKeys = {};
+
+// Event listeners for keydown and keyup events
+document.addEventListener('keydown', (event) => {
+  pressedKeys[event.key] = true;
+});
+
+document.addEventListener('keyup', (event) => {
+  pressedKeys[event.key] = false;
+});
+
+// Update position on every animation frame
+function moveElement() {
+  if (pressedKeys['ArrowLeft'] && positionX > 0) positionX -= speed;
+  if (pressedKeys['ArrowRight'] && positionX < window.innerWidth -controlledElement.offsetWidth) positionX += speed;
+  if (pressedKeys['ArrowUp'] && positionY > 0) positionY -= speed;
+  if (pressedKeys['ArrowDown'] && positionY < window.innerHeight - controlledElement.offsetHeight) positionY += speed;
+
+  updatePosition();
+  requestAnimationFrame(moveElement);
+}
+
+// Call moveElement to start the animation loop
+moveElement();
+
+
+</script>
+</body>
+</html>

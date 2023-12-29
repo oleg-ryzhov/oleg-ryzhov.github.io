@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      * {
+        padding: 0;
+        margin: auto;
+      }
+      canvas {
+        background: #eee;
+        display: block;
+        
+      }
+    </style>
+  </head>
+<body>
+<!-- Create canvas -->
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+<script>
+// Define the canvas
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+// Set the ball's parameters
+const ballRadius = 10;
+// Set the ball's starting position
+let x = canvas.width/2;
+let y = canvas.height-30;
+// Set the ball's starting direction
+let dx = 2;
+let dy = -2;
+
+// Store current score
+let score = 0;
+// Add more lives to the player
+let lives = 3;
+
+// Set the paddle's parameters
+const paddleHeight = 12;
+const paddleWidth = 65;
+let paddleX = (canvas.width-paddleWidth)/2;
+
+// These variables store info about pressed keys
+let rightPressed = false;
+let leftPressed = false;
+
+// These variables are used to create the brick field
+const brickRowCount = 3;
+const brickColumnCount = 5;
+const brickWidth = 75;
+const brickHeight = 20;
+const brickPadding = 10;
+const brickOffsetTop = 30;
+const brickOffsetLeft = 30;
+
+// Create two-dimensional arrays for the bricks
+const bricks = [];
+for (let c = 0; c < brickColumnCount; c++) {
+  bricks[c] = [];
+  for (let r = 0; r < brickRowCount; r++) {
+    bricks[c][r] = { x: 0, y: 0, status: 1 };
+  }
+}
+
+// Function drawBricks will create a field of bricks
+function drawBricks() {
+  for (let c = 0; c < brickColumnCount; c++) {
+    for (let r = 0; r < brickRowCount; r++) {
+      if (bricks[c][r].status === 1) {
+        const brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
+        const brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
+        bricks[c][r].x = brickX;
+        bricks[c][r].y = brickY;
+        ctx.beginPath();
+        ctx.rect(brickX, brickY, brickWidth, brickHeight);
+        ctx.fillStyle = "blue";
+        ctx.fill();
+        ctx.closePath();
+      }
+    }
+  }
+}
+
+// Add event listeners
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+
+// Trigger on key down event
+function keyDownHandler(e) {
+    if(e.key == "Right" || e.key == "ArrowRight") {
+        rightPressed = true;
+    }
+    else if(e.key == "Left" || e.key == "ArrowLeft") {
+        leftPressed = true;
+    }
+}
+
+// Trigger on key up event
+function keyUpHandler(e) {
+    if(e.key == "Right" || e.key == "ArrowRight") {
+        rightPressed = false;
+    }
+    else if(e.key == "Left" || e.key == "ArrowLeft") {
+        leftPressed = false;
+    }
+}
+
+// Detect collision with any of the blocks and reverse direction of the ball
+function collisionDetection() {
+  for (let c = 0; c < brickColumnCount; c++) {
+    for (let r = 0; r < brickRowCount; r++) {
+      const b = bricks[c][r];
+      if (b.status === 1) {
+        if (
+          x + ballRadius > b.x &&
+          x - ballRadius < b.x + brickWidth && // ???
+          y + ballRadius > b.y &&
+          y - ballRadius < b.y + brickHeight // ???
+        ) {
+          dy = -dy;
+          b.status = 0;
+          score++;
+          if (score === brickRowCount * brickColumnCount) {
+            alert("CONGRATULATIONS! YOU WON!");
+            document.location.reload();
+          }
+        }
+      }
+    }
+  }
+}
+
+// Update score
+function drawScore() {
+  ctx.font = "16px Arial";
+  ctx.fillStyle = "#0095DD";
+  ctx.fillText(`Score: ${score}`, 8, 20);
+}
+
+// Update number of lives
+function drawLives() {
+  ctx.font = "16px Arial";
+  ctx.fillStyle = "#0095DD";
+  ctx.fillText(`Lives: ${lives}`, canvas.width - 65, 20);
+}
+
+// Create the paddle
+function drawPaddle() {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight,);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+}
+
+// Create the ball in the begining of the game
+function drawBall() {
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "#33ccff";
+    ctx.fill();
+    ctx.closePath();
+}
+
+// Create a new ball in a different place and clear the previous one, simulating	movement
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+	drawBricks();
+    drawBall();
+// Call different functions
+    drawPaddle();
+	drawScore();
+	drawLives();
+	collisionDetection();
+ 
+// Check whether the ball hit one of the walls, paddle, or the bottom of the canvas
+// The ball hit one of the walls 
+    if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(y + dy < ballRadius) {
+        dy = -dy;
+    }
+// The ball hit the top of the canvas
+    else if(y + dy > canvas.height-ballRadius) {
+// The ball hit the paddle
+        if(x + ballRadius > paddleX && x < paddleX + paddleWidth) {
+            dy = -dy;
+			
+        }
+// The ball hit the bottom of the canvas
+        else {
+// Finish the game and show alert "GAME OVER"
+            lives--;
+if (!lives) {
+  alert("GAME OVER :(");
+  document.location.reload();
+} else {
+  x = canvas.width / 2;
+  y = canvas.height - 30;
+  dx = 2;
+  dy = -2;
+  paddleX = (canvas.width - paddleWidth) / 2;
+    }
+  }
+}
+ 
+// Move the paddle when it has reached the edge of the canvas
+    if(rightPressed && paddleX < canvas.width-paddleWidth) {
+        paddleX += 7;
+    }
+    else if(leftPressed && paddleX > 0) {
+        paddleX -= 7;
+    }
+
+// Add a little value to vars x and y to make them move 
+    x += dx;
+    y += dy;
+// Call function draw() again and again
+ requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+</body>
+</html>

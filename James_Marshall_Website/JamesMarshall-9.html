@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="jamesMarshallStyles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+  <body>
+  
+    <div class="content"><p>Gold Rush wasn't benefitial to all, however. It had a 
+	severe impact on California's enviroment. Rivers became clogged with sediment,
+	biodiversity was compromised and soil was polluted with chemicals from the mining process.</p>
+	</div>
+	<div class="imgbox"><img src="JamesMarshallPictures/GoldRushEffectOnEnviroment.jpg"></div>
+ 
+	<script>
+
+function goBack() {
+	window.location.href = 'JamesMarshall-8.html';
+}
+
+function goForward() {
+	window.location.href = 'JamesMarshall-10.html';
+}
+
+document.addEventListener('keydown', function(event) {
+      // Check if the pressed key is the ArrowLeft key
+      if (event.key === 'ArrowLeft') {
+        // Call function goBack()
+        goBack();
+      }
+	  // Check if the pressed key is the ArrowRight key
+	  if (event.key === 'ArrowRight') {
+	    // Call function goForward()
+		goForward();
+		}
+    });
+	</script>
+  </body>
+</html>

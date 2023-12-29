@@ -1,0 +1,35 @@
+    <!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="jamesMarshallStyles.css">
+
+  </head>
+  <body>
+
+    <div class="content"><p>He was born on October 10, 1810 in Hopewell, New Jersey, where he lived for 28 years.</p></div>
+	<div class="imgbox"><img src="JamesMarshallPictures/JamesMarshallHouseNJ.jpg"></div>
+  
+	<script>
+
+function goBack() {
+	window.location.href = 'JamesMarshall-1.html';
+}
+
+function nextPage() {
+	window.location.href = 'JamesMarshall-3.html';
+}
+
+document.addEventListener('keydown', function(event) {
+      // Check if the pressed key is the ArrowRight key
+      if (event.key === 'ArrowRight') {
+        // Call function nextPage()
+        nextPage();
+      }
+	  if (event.key === 'ArrowLeft') {
+	    // Call function goBack()
+		goBack();
+		}
+    });
+	</script>
+  </body>
+</html>

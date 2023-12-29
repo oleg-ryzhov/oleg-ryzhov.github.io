@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="jamesMarshallStyles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+  <body>
+  
+    <div class="content"><p>Marshall, penniless, eventually
+	ended up in a small cabin. He died at age 74 in Kelsey, California on August 10, 1885.</p>
+	</div>
+	<div class="imgbox"><img src="JamesMarshallPictures/JamesMarshallBeforeDeath.jpg"></div>
+  
+  
+	<script>
+
+function goBack() {
+	window.location.href = 'JamesMarshall-6.html';
+}
+
+function goForward() {
+	window.location.href = 'JamesMarshall-8.html';
+}
+
+document.addEventListener('keydown', function(event) {
+      // Check if the pressed key is the ArrowLeft key
+      if (event.key === 'ArrowLeft') {
+        // Call function goBack()
+        goBack();
+      }
+	  // Check if the pressed key is the ArrowRight key
+	  if (event.key === 'ArrowRight') {
+	    // Call function goForward()
+		goForward();
+		}
+    });
+	</script>
+  </body>
+</html>

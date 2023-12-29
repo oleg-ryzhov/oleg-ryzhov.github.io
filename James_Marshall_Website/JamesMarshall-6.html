@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="jamesMarshallStyles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+  <body>
+  
+    <div class="content"> <p>The Gold Rush ruined Marshall's life. His sawmill failed when all the able-bodied men in the area
+	abandoned everything to search for gold. Before long, arriving hordes of prospectors forced Marshall off his land. 
+	He soon left the area.<br></br>This an average gold mine of that time.</p>
+	</div>
+	<div class="imgbox"><img src="JamesMarshallPictures/GoldRushMiners.jpg"></div>
+  
+  
+	<script>
+
+function goBack() {
+	window.location.href = 'JamesMarshall-5.html';
+}
+
+function goForward() {
+	window.location.href = 'JamesMarshall-7.html';
+}
+
+document.addEventListener('keydown', function(event) {
+      // Check if the pressed key is the ArrowLeft key
+      if (event.key === 'ArrowLeft') {
+        // Call function goBack()
+        goBack();
+      }
+	  // Check if the pressed key is the ArrowRight key
+	  if (event.key === 'ArrowRight') {
+	    // Call function goForward()
+		goForward();
+		}
+    });
+	</script>
+  </body>
+</html>

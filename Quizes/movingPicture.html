@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<img id="movingElement" src="Animation-Experiments/star.png"/>
+<!--
+<script>
+
+// Get the moving element
+const movingElement = document.getElementById("movingElement");
+
+// Initial position
+let positionX = 0;
+let positionY = 0;
+
+// Initial directions
+let directionX = 1; // 1 represents right, -1 represents left
+let directionY = 1; // 1 represents down, -1 represents up
+
+// Function to update the element's position
+function moveElement()
+{
+  // Update the position
+  positionX += 2 * directionX;
+  positionY += 6 * directionY;
+  
+  
+  // Check if the element has moved off the screen
+  if (positionX >= window.innerWidth - movingElement.offsetWidth || positionX <= 0)
+  {
+    directionX *= -1; // Reverse the horizontal direction
+  }
+  
+  // Check if the element has reached the bottom or top edge
+  if (positionY >= window.innerHeight - movingElement.offsetHeight || positionY <= 0) {
+    directionY *= -1; // Reverse the vertical direction
+  }
+  movingElement.style.left = positionX + "px";
+  movingElement.style.bottom = positionY + "px";
+}
+// Call the moveElement function every 10 milliseconds
+const intervalID = setInterval(moveElement, 5);
+
+</script>
+-->
+</body>
+</html>

@@ -1,0 +1,52 @@
+* {
+	margin: 0;
+	padding: 0px;
+
+body {
+	background-color: #222222;
+}
+
+.content {
+	color: #f0f0f0;
+	font-size: 27px;
+	font-family: Georgia, serif;
+	
+	float: right;
+	padding: 20px;
+	width: 40%;
+	display: grid;
+	margin: auto;
+	
+}
+
+.title {
+	color: #f9f9f9;
+	font-size: 40px;
+	font-family: Georgia, serif;
+	
+	display: grid;
+	margin: auto;
+	margin-bottom: 20px;
+}
+
+#tnx {
+	color: #f9f9f9;
+	font-size: 45px;
+	font-family: Georgia, serif;
+	
+	display: grid;
+	float: right;
+	margin-top: 30px;
+	margin-right: 1%;
+}
+	
+.imgbox {
+	display: grid;
+	height: 100%;
+	margin: 10px;	
+}
+		
+img {
+	max-width: 100%;
+	max-height: 90vh;
+}

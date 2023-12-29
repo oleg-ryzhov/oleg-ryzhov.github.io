@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="jamesMarshallStyles.css">
+	  
+  </head>
+  <body>
+  
+    <div class="content"><p class="title">James W. Marshall</p><p>By: Oleg Ryzhov and Waylon Shepherd</p></div>
+	<div class="imgbox"><img src="JamesMarshallPictures/GoldRushOverall.jpg"></div>
+
+	<script>
+
+function goForward() {
+	window.location.href = 'JamesMarshall-1.html';
+}	
+
+document.addEventListener('keydown', function(event) {
+      // Check if the pressed key is the ArrowRight key
+      if (event.key === 'ArrowRight') {
+        // Call function goForward()
+        goForward();
+      }
+    });
+	</script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="jamesMarshallStyles.css">
+	  
+  </head>
+  <body>
+  
+    <div class="content"><p>James Marhall was the first person to find gold in California, accidentally starting the famous gold rush.</p></div>
+	<div class="imgbox"><img src="JamesMarshallPictures/JamesMarshall.jpg"></div>
+
+	<script>
+
+function goForward() {
+	window.location.href = 'JamesMarshall-2.html';
+}	
+
+function goBack() {
+	window.location.href = 'JamesMarshall-index.html';
+}	
+
+document.addEventListener('keydown', function(event) {
+      // Check if the pressed key is the ArrowRight key
+      if (event.key === 'ArrowRight') {
+        // Call function goForward()
+        goForward();
+      }
+	  // Check if the pressed key is the ArrowLeft key
+	  if (event.key === 'ArrowLeft') {
+        // Call function goBack()
+        goBack();
+      }
+    });
+	</script>
+  </body>
+</html>

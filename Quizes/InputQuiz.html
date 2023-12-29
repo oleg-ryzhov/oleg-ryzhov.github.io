@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="InputQuiz.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body onload="nextSet()">
+
+<p class="Header">Multiplication table quiz</p>
+
+<div id="allPage">
+
+<p class="AttemptsCounter">Attempts: <span id="AttemptsCounter">1</span>/3</p>
+
+<div class="card1" id="q"></div>
+	
+<div class="card2">	
+   <form>
+      <input type="number" id="Input" autofocus>
+   </form>
+   
+	  <button onclick="check()" id="SubmitButton">Submit</button> 
+	  <button onclick="nextSet()" id="NextButton" hidden>Next</button>
+	  <button onclick="getAward()" id="AwardButton" hidden>Next</button>  
+ 
+</div>
+
+<p id="Text"></p>
+
+</div>
+
+<script>
+// Create arrays for every Q set with values.
+
+const qSet1 = [
+  "What is 6*7?",
+  "42"
+];
+
+const qSet2 = [
+  "What is 2*4?",
+  "8"
+];
+
+const qSet3 = [
+  "What is 12*11?",
+  "132"
+]; 
+
+const qSet4 = [
+  "What is 3*6?",
+  "18"
+]; 
+
+const qSet5 = [
+  "What is 14*4?",
+  "56"
+]; 
+
+//Create array of qSet arrays
+
+const allQSets = [qSet1, qSet2, qSet3, qSet4, qSet5];
+
+let currentQSet;
+
+let setsIndex = 0;
+
+/* These variables are used at the end of function check()to show number of attempts visitor made
+and send them back when they had too many incorrect attempts */
+
+const attemptsCounterArray = ["2", "3"];
+let incorrectAttempts = 0;
+const allAttempts = 2;
+
+
+// Go to the next question
+
+function nextSet()
+
+  {
+     currentQSet = allQSets[setsIndex];
+     setsIndex++;
+	 
+	 fillForm();
+  }
+
+
+// Below we fill in Q sets.
+
+function fillForm()
+
+{
+  document.getElementById("q").innerHTML = currentQSet[0];
+// Show and hide buttons	 	 
+  document.getElementById("NextButton").hidden = true;
+  document.getElementById("SubmitButton").hidden = false;
+// Hide text  
+  document.getElementById("Text").innerHTML = "";
+// Call function clearInput().
+  clearInput();
+  document.getElementById("AttemptsCounter").innerHTML = "1";
+  incorrectAttempts = 0;
+}
+
+  
+function clearInput()
+
+{
+  document.getElementById("Input").value = "";
+}
+
+/*
+// Submit input on Enter key when focus is on input field.
+var inputField = document.getElementById("Input");
+inputField.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("SubmitButton").click();
+  }
+});
+
+*/
+
+// Below we check answers and whether it is the last question.
+function check()
+
+{
+// Input doesn't contain any numbers.
+ if (document.getElementById("Input").value == "")
+
+  {
+   document.getElementById("Text").innerHTML = // variant2: "Sorry, I didn't get your answer."
+"<p class='IDoNotUnderstandText'>"+"Please enter a number"+"</p>";
+  } 
+   
+// The answer is correct and it is the last question.
+else if (document.getElementById("Input").value == currentQSet[1] && currentQSet == allQSets[allQSets.length-1])
+  
+  {
+   document.getElementById("Text").innerHTML = "<p class='CorrectAnswerText'>"+"Correct!"+"</p>";
+   document.getElementById("SubmitButton").hidden = true;
+// Show and hide buttons.
+   document.getElementById("AwardButton").hidden = false;
+  }
+
+// The answer is correct but it's not the last question.
+ else if (document.getElementById("Input").value == currentQSet[1])
+
+  {
+   document.getElementById("Text").innerHTML = "<p class='CorrectAnswerText'>"+"Correct!"+"</p>";
+   document.getElementById("SubmitButton").hidden = true;
+   document.getElementById("NextButton").hidden = false;
+  }
+
+// The answer is incorrect but it's not the 3rd try.
+ else if (incorrectAttempts < allAttempts)
+
+  {
+   document.getElementById("Text").innerHTML = "<p class='IncorrectAnswerText'>"+"Incorrect!"+"</p>";
+// Call function clearInput().
+   clearInput()
+// Show number of incorrect attempts visitor made.   
+   document.getElementById("AttemptsCounter").innerHTML = attemptsCounterArray[incorrectAttempts];
+   incorrectAttempts++;
+  }
+
+// The answer is incorrect and it's the 3rd try. 
+ else
+ 
+  {
+   document.getElementById("allPage").innerHTML =
+"<p class='IncorrectAnswerText'>"+"Too many incorrect attempts. You cannot continue. Come back later."+"</p>";
+   document.getElementById("SubmitButton").hidden = true;
+   
+// Show number of incorrect attempts visitor made.
+   document.getElementById("AttemptsCounter").innerHTML = attemptsCounterArray[incorrectAttempts];
+  }
+
+}
+
+function getAward()  
+
+  {
+   document.getElementById("allPage").innerHTML =
+"<p class='Congratulations'>"+"Congratulations! You passed the quiz! Here is your award."+"</p>"+
+"<img class='Award' id='Award' src='InputQuizPictures/Award.jpg' width='300'/>";
+  }
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="jamesMarshallStyles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+  <body>
+  
+    <div class="content"><p>Gold Rush had a massive impact on the whole world, both poitive and negative.</p></div>
+	<div class="imgbox"><img src="JamesMarshallPictures/GoldRushLake.jpg"></div>
+  
+  
+	<script>
+
+function goBack() {
+	window.location.href = 'JamesMarshall-10.html';
+}
+
+function goForward() {
+	window.location.href = 'JamesMarshall-12.html';
+}
+
+document.addEventListener('keydown', function(event) {
+      // Check if the pressed key is the ArrowLeft key
+      if (event.key === 'ArrowLeft') {
+        // Call function goBack()
+        goBack();
+      }
+	  // Check if the pressed key is the ArrowRight key
+	  if (event.key === 'ArrowRight') {
+	    // Call function goForward()
+		goForward();
+		}
+    });
+	</script>
+  </body>
+</html>

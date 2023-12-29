@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="jamesMarshallStyles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+  <body>
+	<p id="tnx">Thanks for watching!</p> 
+	<div class="imgbox"><img src="JamesMarshallPictures/GoldRushOverall.jpg"></div>
+  
+	<script>
+
+function goBack() {
+	window.location.href = 'JamesMarshall-11.html';
+}
+
+document.addEventListener('keydown', function(event) {
+      // Check if the pressed key is the ArrowLeft key
+      if (event.key === 'ArrowLeft') {
+        // Call function goBack()
+        goBack();
+      }
+    });
+	</script>
+  </body>
+</html>

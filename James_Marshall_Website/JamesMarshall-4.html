@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="jamesMarshallStyles.css">
+
+  </head>
+  <body>
+  
+    <div class="content"><p>Marshall partnered with John Sutter to build a sawmill in Coloma, CA. He was to oversee the construction and operation of the mill, and would in return receive a portion of the lumber.</p></div>
+	<div class="imgbox"><img src="JamesMarshallPictures/SutterSawmill.jpg"></div>
+  
+	<script>
+
+function goBack() {
+	window.location.href = 'JamesMarshall-3.html';
+}
+
+function nextPage() {
+	window.location.href = 'JamesMarshall-5.html';
+}
+
+document.addEventListener('keydown', function(event) {
+      // Check if the pressed key is the ArrowRight key
+      if (event.key === 'ArrowRight') {
+        // Call function nextPage()
+        nextPage();
+      }
+	  if (event.key === 'ArrowLeft') {
+	    // Call function goBack()
+		goBack();
+		}
+    });
+	</script>
+  </body>
+</html>

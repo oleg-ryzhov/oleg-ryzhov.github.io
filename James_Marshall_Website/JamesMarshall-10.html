@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="jamesMarshallStyles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+  <body>
+  
+    <div class="content"><p>Native Americans also suffered during the Gold Rush, 
+	because they were enslaved to work at mines.</p>
+	</div>
+	<div class="imgbox"><img src="JamesMarshallPictures/NativeAmericansDuringTheGoldRush.jpg"></div>
+  
+  
+	<script>
+
+function goBack() {
+	window.location.href = 'JamesMarshall-9.html';
+}
+
+function goForward() {
+	window.location.href = 'JamesMarshall-11.html';
+}
+
+document.addEventListener('keydown', function(event) {
+      // Check if the pressed key is the ArrowLeft key
+      if (event.key === 'ArrowLeft') {
+        // Call function goBack()
+        goBack();
+      }
+	  // Check if the pressed key is the ArrowRight key
+	  if (event.key === 'ArrowRight') {
+	    // Call function goForward()
+		goForward();
+		}
+    });
+	</script>
+  </body>
+</html>
